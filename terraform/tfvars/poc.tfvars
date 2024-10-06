@@ -5,5 +5,5 @@ location = "uksouth"
 tags = {
   Environment = "poc",
   DeployedBy  = "GitHub-Terraform",
-  Git         = "https://github.com/frasermolyneux-poc/poc-template-azure-terraform"
+  Git         = "https://github.com/frasermolyneux-poc/az-sql-multi-region-cmk"
 }
