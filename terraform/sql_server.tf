@@ -20,18 +20,18 @@ resource "azurerm_mssql_server" "sql_server_neu" {
   administrator_login_password = random_password.sql_admin_password.result
 
   azuread_administrator {
-    login_username = azurerm_user_assigned_identity.sql-neu.name
-    object_id      = azurerm_user_assigned_identity.sql-neu.principal_id
+    login_username = azurerm_user_assigned_identity.sql_neu.name
+    object_id      = azurerm_user_assigned_identity.sql_neu.principal_id
   }
 
   identity {
     type = "UserAssigned"
     identity_ids = [
-      azurerm_user_assigned_identity.sql-neu.id
+      azurerm_user_assigned_identity.sql_neu.id
     ]
   }
 
-  primary_user_assigned_identity_id = azurerm_user_assigned_identity.sql-neu.id
+  primary_user_assigned_identity_id = azurerm_user_assigned_identity.sql_neu.id
   // Where is the auto rotation property for this? *sigh* - https://github.com/hashicorp/terraform-provider-azurerm/issues/23667
   transparent_data_encryption_key_vault_key_id = azurerm_key_vault_key.sql_key.id
 
@@ -52,18 +52,18 @@ resource "azurerm_mssql_server" "sql_server_weu" {
   administrator_login_password = random_password.sql_admin_password.result
 
   azuread_administrator {
-    login_username = azurerm_user_assigned_identity.sql-weu.name
-    object_id      = azurerm_user_assigned_identity.sql-weu.principal_id
+    login_username = azurerm_user_assigned_identity.sql_weu.name
+    object_id      = azurerm_user_assigned_identity.sql_weu.principal_id
   }
 
   identity {
     type = "UserAssigned"
     identity_ids = [
-      azurerm_user_assigned_identity.sql-weu.id
+      azurerm_user_assigned_identity.sql_weu.id
     ]
   }
 
-  primary_user_assigned_identity_id            = azurerm_user_assigned_identity.sql-weu.id
+  primary_user_assigned_identity_id            = azurerm_user_assigned_identity.sql_weu.id
   transparent_data_encryption_key_vault_key_id = azurerm_key_vault_key.sql_key.id
 
   depends_on = [
